@@ -19,6 +19,11 @@ namespace ScriptManager.Api.Controllers
         {
             return Ok(await _scriptService.GetAll());
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetScriptById(int id)
+        {
+            return Ok(await _scriptService.GetById(id));
+        }
         [HttpPost("Create")]
         public async Task<IActionResult> Create(CreateUpdateScriptDto script)
         {

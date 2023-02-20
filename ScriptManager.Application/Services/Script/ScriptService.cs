@@ -48,6 +48,13 @@ namespace ScriptManager.Application.Services
             var result = await _unitOfWork.ScriptRepository.GetAll();
             return _mapper.Map<List<ScriptDto>>(result);
         }
+
+        public async Task<ScriptDto> GetById(int id)
+        {
+            var result = await _unitOfWork.ScriptRepository.GetById(id);
+            return _mapper.Map<ScriptDto>(result);
+        }
+
         public async Task<ScriptDto> Update(CreateUpdateScriptDto script)
         {
             var currentScript = await _unitOfWork.ScriptRepository.GetById(script.Id);
