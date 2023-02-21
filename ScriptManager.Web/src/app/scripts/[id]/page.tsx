@@ -1,4 +1,4 @@
-import CreateEditScript from "../../../components/create.edit.script";
+import CreateEditScript from "../components/create.edit.script";
 
 async function getData(id: number) {
   const res = await fetch(
