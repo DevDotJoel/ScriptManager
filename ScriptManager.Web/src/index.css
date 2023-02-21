@@ -24,4 +24,8 @@ html,body{
 .form-control:focus {
   border-color: #000000;
   box-shadow: none;
+  background-color:	#F8F8F8;
+} 
+.form-control {
+background-color:	#F8F8F8;
 } 

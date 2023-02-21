@@ -19,13 +19,21 @@ builder.Services.AddScoped<IScriptService, ScriptService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper((sp, cfg) => cfg.AddProfile(typeof(ScriptMapping)), Array.Empty<Assembly>());
+builder.Services.AddCors(o => o.AddPolicy("react", builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+}));
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-    app.UseSwagger();
-    app.UseSwaggerUI();
-
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseCors("react");
 
 app.UseHttpsRedirection();
 

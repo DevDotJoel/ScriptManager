@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { apiUrl } from "../../shared/enviroment/enviroment";
 
 export const ScriptsPage = () => {
   const [scripts, setScripts] = useState([]);
@@ -18,9 +19,7 @@ export const ScriptsPage = () => {
   }, []);
 
   async function getData() {
-    const res = await fetch(
-      "https://scriptmanagerapi.azurewebsites.net/api/Script"
-    );
+    const res = await fetch(`${apiUrl}api/Script`);
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
 

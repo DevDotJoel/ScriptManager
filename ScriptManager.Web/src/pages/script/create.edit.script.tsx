@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { apiUrl } from "../../shared/enviroment/enviroment";
 
 export const CreateEditScriptPage = () => {
   const navigate = useNavigate();
@@ -17,9 +18,7 @@ export const CreateEditScriptPage = () => {
   }, []);
 
   async function getData() {
-    const res = await fetch(
-      `https://scriptmanagerapi.azurewebsites.net/api/Script/${Number(id)}`
-    );
+    const res = await fetch(`${apiUrl}api/Script/${Number(id)}`);
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
 
@@ -37,6 +36,10 @@ export const CreateEditScriptPage = () => {
   function onChange({ target }: any) {
     let currentScript = { ...script, [target.name]: target.value };
     setScript(currentScript);
+  }
+  function submit(event: any) {
+    event.preventDefault();
+    console.log(event);
   }
   return (
     <>
@@ -79,7 +82,7 @@ export const CreateEditScriptPage = () => {
                       </h3>
                     </div>
                   </div>
-                  <form className=" was-validated">
+                  <form onSubmit={submit} className=" was-validated">
                     <div className="row mt-3">
                       <div className="col">
                         <label htmlFor="name" className="form-label">
@@ -120,9 +123,7 @@ export const CreateEditScriptPage = () => {
                     </div>
                     <div className="row mt-3">
                       <div className="col">
-                        <button type="submit" className="btn btn-dark">
-                          Submit
-                        </button>
+                        <button className="btn btn-dark">Submit</button>
                       </div>
                     </div>
                   </form>
