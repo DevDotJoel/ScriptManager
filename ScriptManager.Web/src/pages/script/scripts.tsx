@@ -1,14 +1,37 @@
-"use client";
-import Link from "next/link";
-import { useState } from "react";
-import Modal from "react-bootstrap/Modal";
-export default function Scripts({ currentScripts }: any) {
-  const [scripts, setScripts] = useState(currentScripts);
+import React, { useEffect, useState } from "react";
+import { Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+export const ScriptsPage = () => {
+  const [scripts, setScripts] = useState([]);
   const [script, setScript] = useState<any>({});
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  useEffect(() => {
+    const init = async () => {
+      await getData();
+    };
+
+    init();
+  }, []);
+
+  async function getData() {
+    const res = await fetch(
+      "https://scriptmanagerapi.azurewebsites.net/api/Script"
+    );
+    // The return value is *not* serialized
+    // You can return Date, Map, Set, etc.
+
+    // Recommendation: handle errors
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return setScripts(await res.json());
+  }
   function deleteScript(id: number) {
     const currentScript = scripts.find((script: any) => script.id === id);
     setScript(currentScript);
@@ -65,7 +88,7 @@ export default function Scripts({ currentScripts }: any) {
                             <div className="d-flex flex-row">
                               <div>
                                 <Link
-                                  href={`scripts/${script.id}`}
+                                  to={`/scripts/${script.id}`}
                                   className="btn btn-dark  d-block    "
                                 >
                                   Edit
@@ -122,4 +145,4 @@ export default function Scripts({ currentScripts }: any) {
       </Modal>
     </>
   );
-}
+};
