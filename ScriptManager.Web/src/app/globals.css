@@ -4,7 +4,9 @@ html,body{
     background-color: #f7f7f7;
 }
 
-
+.custom-dark{
+    background-color:#000 !important;
+}
 .btn-dark:hover {
     color: #000000 !important;
     background-color: #fff !important;
@@ -18,9 +20,6 @@ html,body{
     border-color: #020202 !important;
 }
 
-.bg-dark{
-    background-color:#000 !important;
-}
 .form-control:focus {
     border-color: #000000;
     box-shadow: none;
