@@ -12,8 +12,8 @@ using ScriptManager.Infrastructure.Data;
 namespace ScriptManager.Infrastructure.Migrations
 {
     [DbContext(typeof(ScriptManagerContext))]
-    [Migration("20230212124913_MinorUpdate")]
-    partial class MinorUpdate
+    [Migration("20230220205009_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,6 +104,9 @@ namespace ScriptManager.Infrastructure.Migrations
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
+                            b1.Property<int>("Type")
+                                .HasColumnType("int");
+
                             b1.HasKey("Id");
 
                             b1.HasIndex("ScriptId");
@@ -120,6 +123,9 @@ namespace ScriptManager.Infrastructure.Migrations
                                         .HasColumnType("int");
 
                                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b2.Property<int>("Id"));
+
+                                    b2.Property<string>("JumpToQuestion")
+                                        .HasColumnType("nvarchar(max)");
 
                                     b2.Property<int>("QuestionId")
                                         .HasColumnType("int");

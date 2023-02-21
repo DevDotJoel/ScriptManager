@@ -1,7 +1,9 @@
 import CreateEditScript from "../components/create.edit.script";
 
 async function getData(id: number) {
-  const res = await fetch(`http://localhost:5219/api/Script/${id}`);
+  const res = await fetch(
+    `https://scriptmanagerapi.azurewebsites.net/api/Script/${id}`
+  );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -16,10 +18,11 @@ async function getData(id: number) {
 
 export default async function CreateEditScriptPage({ params }: any) {
   const { id } = params;
-  const script = await getData(Number(id));
+  const script = id ? await getData(Number(id)) : null;
+
   return (
     <>
-      <CreateEditScript script={script} />
+      <CreateEditScript data={script} />
     </>
   );
 }

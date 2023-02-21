@@ -1,10 +1,6 @@
-import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.bundle";
-// import "@fontsource/roboto/300.css";
-// import "@fontsource/roboto/400.css";
-// import "@fontsource/roboto/500.css";
-// import "@fontsource/roboto/700.css";
+import "./globals.css";
+
 import { Inter } from "@next/font/google";
 
 import NavBar from "./navbar";
@@ -38,7 +34,7 @@ export default function RootLayout({
                   >
                     <h3 className="fs-5 d-none d-sm-inline">
                       {" "}
-                      <b> Centro Script</b>
+                      <b> Script Center</b>
                     </h3>
                   </Link>
                   <ul

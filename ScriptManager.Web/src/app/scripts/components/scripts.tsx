@@ -21,25 +21,23 @@ export default function Scripts({ currentScripts }: any) {
             <b>Scripts</b>
           </h1>
         </div>
+        <div className="col  d-flex justify-content-end">
+          <div>
+            <button className="btn btn-dark "> Add Script</button>
+          </div>
+        </div>
       </div>
 
       <div className="row d-flex justify-content-center mt-5">
         <div className="col ">
-          <div className="card  rounded">
+          <div className="card shadow rounded">
             <div className="card-body">
-              <div className="row">
-                <div className="col  d-flex justify-content-end">
-                  <div>
-                    <button className="btn btn-dark "> Add Script</button>
-                  </div>
-                </div>
-              </div>
               <div className="row mt-3">
                 <div className="col col-sm-5">
                   <input
                     placeholder="search "
                     type="text"
-                    className="form-control"
+                    className="form-control rounded"
                     id="search"
                     aria-describedby="emailHelp"
                   />
@@ -64,21 +62,27 @@ export default function Scripts({ currentScripts }: any) {
                           <td>{script.name}</td>
                           <td>{script.questions.length}</td>
                           <td>
-                            <Link
-                              href={`scripts/${script.id}`}
-                              className="btn btn-dark  w-25  "
-                            >
-                              Edit
-                            </Link>
-                            <button
-                              onClick={() => {
-                                deleteScript(script.id);
-                                handleShow();
-                              }}
-                              className="btn btn-danger w-25 ms-2 "
-                            >
-                              Delete
-                            </button>
+                            <div className="d-flex flex-row">
+                              <div>
+                                <Link
+                                  href={`scripts/${script.id}`}
+                                  className="btn btn-dark  d-block    "
+                                >
+                                  Edit
+                                </Link>
+                              </div>
+                              <div>
+                                <button
+                                  onClick={() => {
+                                    deleteScript(script.id);
+                                    handleShow();
+                                  }}
+                                  className="btn btn-danger d-block ms-2 "
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                            </div>
                           </td>
                         </tr>
                       ))}

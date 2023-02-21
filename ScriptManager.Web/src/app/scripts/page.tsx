@@ -2,7 +2,9 @@ import Link from "next/link";
 import Scripts from "./components/scripts";
 
 async function getData() {
-  const res = await fetch("http://localhost:5219/api/Script");
+  const res = await fetch(
+    "https://scriptmanagerapi.azurewebsites.net/api/Script"
+  );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
