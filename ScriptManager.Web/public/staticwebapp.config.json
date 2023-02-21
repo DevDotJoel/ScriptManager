@@ -1,6 +1,0 @@
-{
-  "navigationFallback": {
-    "rewrite": "index.html",
-    "exclude": ["/*.{     ADD_FILE_EXTENSIONS_HERE    }"]
-  }
-}
