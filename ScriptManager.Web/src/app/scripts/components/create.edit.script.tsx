@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 export default function CreateEditScript({ data }: any) {
+  console.log(data);
   const [value, setValue] = useState("1");
   const [script, setScript] = useState<any>(data);
 

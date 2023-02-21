@@ -1,7 +1,7 @@
 html,body{
     height: 100% !important;
-    font-family: var(--font-inter) !important;
-    background-color: #f7f7f7 !important;
+    font-family: var(--font-inter) !;
+    background-color: #f7f7f7;
 }
 
 

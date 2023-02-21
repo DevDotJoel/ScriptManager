@@ -3,7 +3,8 @@ import Scripts from "./components/scripts";
 
 async function getData() {
   const res = await fetch(
-    "https://scriptmanagerapi.azurewebsites.net/api/Script"
+    "https://scriptmanagerapi.azurewebsites.net/api/Script",
+    { cache: "no-store" }
   );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
@@ -13,15 +14,10 @@ async function getData() {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
-
-  return res.json();
+  return await res.json();
 }
 
 export default async function Page() {
   const scripts = await getData();
-  return (
-    <>
-      <Scripts currentScripts={scripts} />
-    </>
-  );
+  return <>{<Scripts currentScripts={scripts} />}</>;
 }
