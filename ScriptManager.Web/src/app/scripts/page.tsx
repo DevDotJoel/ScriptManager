@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Scripts from "./components/scripts";
+import Scripts from "../../components/scripts";
 
 async function getData() {
   const res = await fetch(
