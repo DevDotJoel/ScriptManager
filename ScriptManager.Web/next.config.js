@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    
-    output: 'standalone',
+  output: 'standalone',
+    experimental: {    
     appDir: true,
     serverComponentsExternalPackages: ['react-bootstrap'],  },
     fontLoaders: [
