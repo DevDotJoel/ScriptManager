@@ -1,5 +1,3 @@
-using ScriptManager.Domain.ScriptAggregate.Entities;
-
 namespace ScriptManager.Application.Common.Models.Script
 {
     public class ScriptDto

@@ -2,8 +2,10 @@ using AutoMapper;
 using ScriptManager.Application.Common.Exceptions;
 using ScriptManager.Application.Common.Interfaces;
 using ScriptManager.Application.Common.Models.Script;
-using ScriptManager.Domain.Common.Interfaces;
-using ScriptManager.Domain.ScriptAggregate;
+using ScriptManager.Domain.Aggregates.ScriptAggregate;
+using ScriptManager.Domain.Aggregates.ScriptAggregate.Models;
+using ScriptManager.Domain.Shared.Interfaces;
+
 namespace ScriptManager.Application.Services
 {
     public class ScriptService : IScriptService
@@ -18,25 +20,7 @@ namespace ScriptManager.Application.Services
         public async Task<ScriptDto> Create(CreateUpdateScriptDto script)
         {
             var currentScript = new Script(script.Name, script.Description);
-            foreach (var question in script.Questions!)
-            {
-                var questionAdded = currentScript.AddQuestion(question.Number, question.Title, question.Text, question.Type);
-                foreach (var answer in question.Answers!)
-                {
-                    if (!string.IsNullOrEmpty(answer.JumpToQuestion))
-                    {
-                        if (!script.Questions.Any(q => q.Number.Contains(answer.JumpToQuestion, StringComparison.OrdinalIgnoreCase)))
-                        {
-                            throw new NotFoundException("question not found");
-                        }
-                        else if (question.Number.Contains(answer.JumpToQuestion, StringComparison.OrdinalIgnoreCase))
-                        {
-                            throw new NotFoundException("Answer cannot jump to same question");
-                        }
-                    }
-                    questionAdded.AddAnswer(answer.Text, answer.JumpToQuestion);
-                }
-            }
+            currentScript.AddQuestions(_mapper.Map<List<AddQuestion>>(script.Questions));
             await _unitOfWork.ScriptRepository.AddAsync(currentScript);
             await _unitOfWork.SaveChangesAsync();
 

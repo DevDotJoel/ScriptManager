@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function NavBar() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-light custom-dark">
         <div className="container-fluid">
           <Link className="navbar-brand text-white" href="/">
             App

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ScriptManager.Application.Common.Interfaces;
 using ScriptManager.Application.Common.Mapping;
 using ScriptManager.Application.Services;
-using ScriptManager.Domain.Common.Interfaces;
+using ScriptManager.Domain.Shared.Interfaces;
 using ScriptManager.Infrastructure.Data;
 using ScriptManager.Infrastructure.UnitOfWork;
 using System.Reflection;

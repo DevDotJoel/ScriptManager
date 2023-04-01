@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ScriptManager.Domain.ScriptAggregate.Enums;
-
+using ScriptManager.Domain.Aggregates.ScriptAggregate.Enums;
 namespace ScriptManager.Application.Common.Models.Script
 {
     public class CreateUpdateQuestionDto
