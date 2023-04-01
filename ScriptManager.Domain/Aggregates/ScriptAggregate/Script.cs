@@ -1,6 +1,5 @@
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Entities;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Enums;
-using ScriptManager.Domain.Aggregates.ScriptAggregate.Models;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Params;
 using ScriptManager.Domain.Shared.Models;
 namespace ScriptManager.Domain.Aggregates.ScriptAggregate
@@ -26,34 +25,63 @@ namespace ScriptManager.Domain.Aggregates.ScriptAggregate
             _questions.Add(question);
             return question;
         }
-        public void AddQuestions(List<QuestionParam> questions)
+        public void AddOrUpdateQuestions(List<QuestionParam> questions)
         {
             foreach (var currentQuestion in questions)
             {
-                if(!CheckIfQuestionExists(currentQuestion.Number))
                 {
-                    var question = new Question(currentQuestion.Number, currentQuestion.Title, currentQuestion.Text, currentQuestion.Type, null);
-                    foreach (var currentAnswer in currentQuestion.Answers)
+                    if (CheckIfQuestionExists(currentQuestion.Number) || questions.Any(q => q.Number.Contains(currentQuestion.Number.ToLower(), StringComparison.OrdinalIgnoreCase)))
                     {
-                        if (!string.IsNullOrEmpty(currentAnswer.JumpToQuestion))
+                        if (currentQuestion.Id == 0)
                         {
-                            if (CheckIfQuestionExists(currentAnswer.JumpToQuestion))
+                            var question = new Question(currentQuestion.Number, currentQuestion.Title, currentQuestion.Text, currentQuestion.Type, null);
+                            foreach (var currentAnswer in currentQuestion.Answers)
                             {
-                                throw new Exception("question not found");
+                                if (!string.IsNullOrEmpty(currentAnswer.JumpToQuestion))
+                                {
+                                    if (!CheckIfQuestionExists(currentAnswer.JumpToQuestion) || !questions.Any(q => q.Number.Contains(currentQuestion.Number.ToLower(), StringComparison.OrdinalIgnoreCase)))
+                                    {
+                                        throw new Exception("question not found");
+                                    }
+                                    else if (question.Number.Contains(currentAnswer.JumpToQuestion, StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        throw new Exception("Answer cannot jump to same question");
+                                    }
+                                }
+
+                                question.AddAnswer(currentAnswer.Text, currentAnswer.JumpToQuestion);
+
                             }
-                            else if (question.Number.Contains(currentAnswer.JumpToQuestion, StringComparison.OrdinalIgnoreCase))
-                            {
-                                throw new Exception("Answer cannot jump to same question");
-                            }
+                            _questions.Add(question);
                         }
+                        else if(currentQuestion.DeleteQuestion)
+                        {
+                            RemoveQuestion(currentQuestion.Id);
 
-                        question.AddAnswer(currentAnswer.Text, currentAnswer.JumpToQuestion);
+                        }
+                        else
+                        {
+                            var questionToUpdate= GetQuestionById(currentQuestion.Id);
+                            questionToUpdate.SetTitle(currentQuestion.Title);
+                            questionToUpdate.SetText(currentQuestion.Text);
+                            questionToUpdate.SetType(currentQuestion.Type);
+                            foreach (var currentAnswer in currentQuestion.Answers)
+                            {
 
+                            }
+                            
+                            
+                        }
                     }
-                    _questions.Add(question);
                 }
+                
 
             }
+        }
+        private void UpdateQuestions(List<QuestionParam> questions)
+        {
+
+
         }
         public Question GetQuestionById(int questionId)
         {

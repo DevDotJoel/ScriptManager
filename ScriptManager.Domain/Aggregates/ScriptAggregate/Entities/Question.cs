@@ -41,6 +41,23 @@ namespace ScriptManager.Domain.Aggregates.ScriptAggregate.Entities
             var answer = Answers.Where(a => a.Id == answerId)!.FirstOrDefault();
             return answer;
         }
+        public void SetNumber(string number)
+        {
+            Number = number;
+
+        }
+        public void SetTitle(string title) { 
+
+            Title = title;
+        }
+        public void SetText(string text)
+        {
+            Text = text;
+        }
+        public void SetType(QuestionType type)
+        {
+            Type = type;
+        }
         public void RemoveAnswer(int answerId)
         {
             var answer = _answers.Find(a => a.Id == answerId);

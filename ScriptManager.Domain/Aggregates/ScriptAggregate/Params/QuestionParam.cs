@@ -15,5 +15,6 @@ namespace ScriptManager.Domain.Aggregates.ScriptAggregate.Params
         public string Text { get; set; }
         public QuestionType Type { get;  set; }
         public List<AnswerParam> Answers { get; set; }
+        public bool DeleteQuestion { get; set; }
     }
 }
