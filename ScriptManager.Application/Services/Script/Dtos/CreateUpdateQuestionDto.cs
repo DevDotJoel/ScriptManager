@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Enums;
+using ScriptManager.Domain.Aggregates.ScriptAggregate.Params;
+
 namespace ScriptManager.Application.Common.Models.Script
 {
     public class CreateUpdateQuestionDto

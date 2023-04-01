@@ -2,7 +2,7 @@
 using ScriptManager.Application.Common.Models.Script;
 using ScriptManager.Domain.Aggregates.ScriptAggregate;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Entities;
-using ScriptManager.Domain.Aggregates.ScriptAggregate.Models;
+using ScriptManager.Domain.Aggregates.ScriptAggregate.Params;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +18,8 @@ namespace ScriptManager.Application.Common.Mapping
             CreateMap<Script, ScriptDto>();
             CreateMap<Question, QuestionDto>();
             CreateMap<Answer, AnswerDto>();
-            CreateMap<CreateUpdateQuestionDto, AddQuestion>();
-            CreateMap<AnswerDto, AddAnswer>();
+            CreateMap<CreateUpdateQuestionDto, QuestionParam>();
+            CreateMap<AnswerDto, AnswerParam>();
         }
     }
 }

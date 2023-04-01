@@ -11,6 +11,6 @@ namespace ScriptManager.Application.Common.Models.Script
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<CreateUpdateQuestionDto>? Questions { get; set; }
+        public List<CreateUpdateQuestionDto> Questions { get; set; }
     }
 }

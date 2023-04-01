@@ -1,10 +1,8 @@
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Entities;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Enums;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Models;
+using ScriptManager.Domain.Aggregates.ScriptAggregate.Params;
 using ScriptManager.Domain.Shared.Models;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 namespace ScriptManager.Domain.Aggregates.ScriptAggregate
 {
     public sealed class Script : Entity<int>, IAggregateRoot
@@ -28,7 +26,7 @@ namespace ScriptManager.Domain.Aggregates.ScriptAggregate
             _questions.Add(question);
             return question;
         }
-        public void AddQuestions(List<AddQuestion> questions)
+        public void AddQuestions(List<QuestionParam> questions)
         {
             foreach (var currentQuestion in questions)
             {
@@ -39,7 +37,7 @@ namespace ScriptManager.Domain.Aggregates.ScriptAggregate
                     {
                         if (!string.IsNullOrEmpty(currentAnswer.JumpToQuestion))
                         {
-                            if (!Questions.Any(q => q.Number.Contains(currentAnswer.JumpToQuestion, StringComparison.OrdinalIgnoreCase)))
+                            if (CheckIfQuestionExists(currentAnswer.JumpToQuestion))
                             {
                                 throw new Exception("question not found");
                             }
@@ -73,9 +71,9 @@ namespace ScriptManager.Domain.Aggregates.ScriptAggregate
             _questions.Remove(question!);
             return question;
         }
-        public bool CheckIfQuestionExists(string number)
+        private bool CheckIfQuestionExists(string number)
         {
-            return _questions.Any(q => q.Number.Contains(number.ToLower()));
+            return _questions.Any(q => q.Number.Contains(number.ToLower(), StringComparison.OrdinalIgnoreCase));
         }
 
     }
