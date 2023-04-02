@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateEditScriptComponent } from './features/script/create-edit-script/create-edit-script.component';
@@ -9,6 +9,7 @@ import { CampaignsComponent } from './features/campaign/campaigns/campaigns.comp
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { ScriptListComponent } from './features/script/components/script-list/script-list.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,13 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     CampaignsComponent,
     LayoutComponent,
     SpinnerComponent,
-    NavbarComponent
+    NavbarComponent,
+    ScriptListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

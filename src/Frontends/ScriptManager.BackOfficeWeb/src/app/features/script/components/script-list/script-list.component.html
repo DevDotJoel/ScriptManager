@@ -1,1 +1,18 @@
-<p>script-list works!</p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col"> Total Questions</th>
+      <th scope="col"> Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor= "let script of scripts">
+      <td>{{ script.name }}</td>
+      <td>{{ script.name }}</td>
+      <td>{{script.questions.length }}</td>
+      <td><a class="btn btn-dark w-25" [routerLink]="['/scripts', script.id]">Edit</a></td>
+  </tr>
+  </tbody>
+</table>

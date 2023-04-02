@@ -12,14 +12,11 @@ builder.Services.AddApplication().AddInfrastructure();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper((sp, cfg) => cfg.AddProfile(typeof(ScriptMapping)), Array.Empty<Assembly>());
-builder.Services.AddCors(o => o.AddPolicy("react", builder =>
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
-    builder.AllowAnyOrigin()
-           .AllowAnyMethod()
-           .AllowAnyHeader();
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
 }));
-
+builder.Services.AddAutoMapper((sp, cfg) => cfg.AddProfile(typeof(ScriptMapping)), Array.Empty<Assembly>());
 
 var app = builder.Build();
 
@@ -27,7 +24,7 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseCors("react");
+app.UseCors("corsapp");
 
 app.UseHttpsRedirection();
 
