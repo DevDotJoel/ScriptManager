@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ScriptManager.Application.Common.Models.Script;
+using ScriptManager.Application.Services.Script.Dtos;
 using ScriptManager.Domain.Aggregates.ScriptAggregate;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Entities;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Params;
@@ -19,7 +20,7 @@ namespace ScriptManager.Application.Common.Mapping
             CreateMap<Question, QuestionDto>();
             CreateMap<Answer, AnswerDto>();
             CreateMap<CreateUpdateQuestionDto, QuestionParam>();
-            CreateMap<AnswerDto, AnswerParam>();
+            CreateMap<CreateUpdateAnswerDto, AnswerParam>();
         }
     }
 }

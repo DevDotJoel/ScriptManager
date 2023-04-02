@@ -62,13 +62,41 @@ namespace ScriptManager.Domain.Aggregates.ScriptAggregate
                         else
                         {
                             var questionToUpdate= GetQuestionById(currentQuestion.Id);
-                            questionToUpdate.SetTitle(currentQuestion.Title);
-                            questionToUpdate.SetText(currentQuestion.Text);
-                            questionToUpdate.SetType(currentQuestion.Type);
-                            foreach (var currentAnswer in currentQuestion.Answers)
+                            if(questionToUpdate!=null)
                             {
-
+                                questionToUpdate.SetTitle(currentQuestion.Title);
+                                questionToUpdate.SetText(currentQuestion.Text);
+                                questionToUpdate.SetType(currentQuestion.Type);
+                                foreach (var currentAnswer in currentQuestion.Answers)
+                                {
+                                    if (currentAnswer.Id == 0)
+                                    {
+                                        questionToUpdate.AddAnswer(currentAnswer.Text,currentAnswer.JumpToQuestion);
+                                    }
+                                    else if(currentAnswer.DeleteAnswer)
+                                    {
+                                        questionToUpdate.RemoveAnswer(currentAnswer.Id);
+                                    }
+                                    else
+                                    {
+                                        var answerToUpdate = questionToUpdate.GetAnswerById(currentAnswer.Id);
+                                        if (answerToUpdate != null)
+                                        {
+                                            answerToUpdate.UpdateAnswer(currentAnswer.Text, answerToUpdate.JumpToQuestion);
+                                        }
+                                        else
+                                        {
+                                            throw new Exception("answer not found");
+                                        }
+                                    }
+      
+                                }
                             }
+                            else
+                            {
+                                throw new Exception("question not found");                           
+                            }
+
                             
                             
                         }
@@ -77,11 +105,6 @@ namespace ScriptManager.Domain.Aggregates.ScriptAggregate
                 
 
             }
-        }
-        private void UpdateQuestions(List<QuestionParam> questions)
-        {
-
-
         }
         public Question GetQuestionById(int questionId)
         {

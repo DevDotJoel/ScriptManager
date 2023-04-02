@@ -8,7 +8,7 @@ using ScriptManager.Domain.Aggregates.ScriptAggregate.Params;
 
 namespace ScriptManager.Application.Common.Models.Script
 {
-    public class QuestionDto:QuestionParam
+    public class QuestionDto
     {
         public int Id { get; set; }
         public string Number { get; set; }
