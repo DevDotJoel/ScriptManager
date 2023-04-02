@@ -1,9 +1,8 @@
 using AutoMapper;
+using ScriptManager.Application.Common.Dtos;
 using ScriptManager.Application.Common.Exceptions;
 using ScriptManager.Application.Common.Interfaces;
-using ScriptManager.Application.Common.Models.Script;
 using ScriptManager.Domain.Aggregates.ScriptAggregate;
-using ScriptManager.Domain.Aggregates.ScriptAggregate.Factory;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Params;
 using ScriptManager.Domain.Shared.Interfaces;
 
@@ -12,17 +11,15 @@ namespace ScriptManager.Application.Services
     public class ScriptService : IScriptService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IScriptFactory _scriptFactory;
         private readonly IMapper _mapper;
-        public ScriptService(IUnitOfWork unitOfWork, IMapper mapper,IScriptFactory scriptFactory)
+        public ScriptService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _scriptFactory = scriptFactory;
         }
         public async Task<ScriptDto> Create(CreateUpdateScriptDto script)
         {
-            var currentScript = _scriptFactory.Create(script.Name, script.Description);
+            var currentScript = Script.Create(script.Name, script.Description);
             currentScript.AddOrUpdateQuestions(_mapper.Map<List<QuestionParam>>(script.Questions));
             await _unitOfWork.ScriptRepository.AddAsync(currentScript);
             await _unitOfWork.SaveChangesAsync();

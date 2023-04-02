@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using ScriptManager.Application;
 using ScriptManager.Application.Common.Interfaces;
 using ScriptManager.Application.Common.Mapping;
 using ScriptManager.Application.Services;
-using ScriptManager.Domain.Aggregates.ScriptAggregate.Factory;
 using ScriptManager.Domain.Shared.Interfaces;
+using ScriptManager.Infrastructure;
 using ScriptManager.Infrastructure.Data;
-using ScriptManager.Infrastructure.UnitOfWork;
+using ScriptManager.Infrastructure.Persistence;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,10 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<ScriptManagerContext>(options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
-builder.Services.AddScoped<IScriptFactory, ScriptFactory>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IScriptService, ScriptService>();
+builder.Services.AddApplication().AddInfrastructure();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

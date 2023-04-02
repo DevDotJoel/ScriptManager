@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using ScriptManager.Application.Common.Dtos;
 using ScriptManager.Application.Common.Interfaces;
-using ScriptManager.Application.Common.Models.Script;
 
 namespace ScriptManager.Api.Controllers
 {

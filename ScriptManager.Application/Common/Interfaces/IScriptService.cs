@@ -1,4 +1,4 @@
-using ScriptManager.Application.Common.Models.Script;
+using ScriptManager.Application.Common.Dtos;
 
 namespace ScriptManager.Application.Common.Interfaces
 {

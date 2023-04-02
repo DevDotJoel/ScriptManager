@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScriptManager.Application.Common.Models.Script
+namespace ScriptManager.Application.Common.Dtos
 {
     public class CreateUpdateScriptDto
     {

@@ -19,6 +19,10 @@ namespace ScriptManager.Domain.Aggregates.ScriptAggregate
         private Script()
         {
         }
+        public static Script Create(string name, string description)
+        {
+            return new Script(name, description);
+        }
         public Question AddQuestion(string number, string title, string text, QuestionType type)
         {
             var question = new Question(number, title, text, type, null);

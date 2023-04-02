@@ -4,7 +4,7 @@ using ScriptManager.Domain.Shared.Repositories;
 using ScriptManager.Infrastructure.Data;
 using ScriptManager.Infrastructure.Repositories;
 
-namespace ScriptManager.Infrastructure.UnitOfWork
+namespace ScriptManager.Infrastructure.Persistence
 {
 
     public class UnitOfWork : IUnitOfWork, IDisposable

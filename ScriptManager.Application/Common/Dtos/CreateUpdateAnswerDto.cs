@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScriptManager.Application.Services.Script.Dtos
+namespace ScriptManager.Application.Common.Dtos
 {
     public class CreateUpdateAnswerDto
     {

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using ScriptManager.Application.Common.Models.Script;
-using ScriptManager.Application.Services.Script.Dtos;
+using ScriptManager.Application.Common.Dtos;
 using ScriptManager.Domain.Aggregates.ScriptAggregate;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Entities;
 using ScriptManager.Domain.Aggregates.ScriptAggregate.Params;

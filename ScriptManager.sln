@@ -3,21 +3,36 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptManager.Api", "ScriptManager.Api\ScriptManager.Api.csproj", "{B705A68B-AEDF-4C05-8E30-98BE7079AEED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScriptManager.Api", "ScriptManager.Api\ScriptManager.Api.csproj", "{B705A68B-AEDF-4C05-8E30-98BE7079AEED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptManager.Application", "ScriptManager.Application\ScriptManager.Application.csproj", "{7B5F27EC-2653-43F3-9B61-ED2B6AE9F329}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScriptManager.Application", "ScriptManager.Application\ScriptManager.Application.csproj", "{7B5F27EC-2653-43F3-9B61-ED2B6AE9F329}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptManager.Domain", "ScriptManager.Domain\ScriptManager.Domain.csproj", "{35772A92-46A9-4344-A805-B0CBD95062CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScriptManager.Domain", "ScriptManager.Domain\ScriptManager.Domain.csproj", "{35772A92-46A9-4344-A805-B0CBD95062CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptManager.Infrastructure", "ScriptManager.Infrastructure\ScriptManager.Infrastructure.csproj", "{333CF28A-19B7-455B-8688-B1655F83CE6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScriptManager.Infrastructure", "ScriptManager.Infrastructure\ScriptManager.Infrastructure.csproj", "{333CF28A-19B7-455B-8688-B1655F83CE6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DC8CDE24-C00F-44FA-88A6-884CF8B30841}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CD2AFA3B-0D68-41D0-BC73-C20CCC6DBBC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{854354A9-71B0-4F7E-B3DC-903BEAE3352D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{ABDEF804-9A9D-4BA1-AE95-05A3E9E3BC21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{69AA4AF0-57F4-4EA7-B528-2542F00B713A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptManager.Api", "ScriptManager.Api", "{A49DBD1D-F745-4EE3-8618-667A06217BE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptManager.Application", "ScriptManager.Application", "{A92E9DA7-1C3C-4EF7-B22A-6C417E5EF6F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptManager.Domain", "ScriptManager.Domain", "{8C89A7D8-CA4C-426C-87F1-AC9392BD07E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptManager.Infrastructure", "ScriptManager.Infrastructure", "{FF0D41C9-33C8-4443-B9B4-AB45B5646932}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B705A68B-AEDF-4C05-8E30-98BE7079AEED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +51,24 @@ Global
 		{333CF28A-19B7-455B-8688-B1655F83CE6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{333CF28A-19B7-455B-8688-B1655F83CE6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{333CF28A-19B7-455B-8688-B1655F83CE6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B705A68B-AEDF-4C05-8E30-98BE7079AEED} = {A49DBD1D-F745-4EE3-8618-667A06217BE7}
+		{7B5F27EC-2653-43F3-9B61-ED2B6AE9F329} = {A92E9DA7-1C3C-4EF7-B22A-6C417E5EF6F3}
+		{35772A92-46A9-4344-A805-B0CBD95062CD} = {8C89A7D8-CA4C-426C-87F1-AC9392BD07E7}
+		{333CF28A-19B7-455B-8688-B1655F83CE6E} = {FF0D41C9-33C8-4443-B9B4-AB45B5646932}
+		{854354A9-71B0-4F7E-B3DC-903BEAE3352D} = {DC8CDE24-C00F-44FA-88A6-884CF8B30841}
+		{ABDEF804-9A9D-4BA1-AE95-05A3E9E3BC21} = {DC8CDE24-C00F-44FA-88A6-884CF8B30841}
+		{69AA4AF0-57F4-4EA7-B528-2542F00B713A} = {DC8CDE24-C00F-44FA-88A6-884CF8B30841}
+		{A49DBD1D-F745-4EE3-8618-667A06217BE7} = {854354A9-71B0-4F7E-B3DC-903BEAE3352D}
+		{A92E9DA7-1C3C-4EF7-B22A-6C417E5EF6F3} = {ABDEF804-9A9D-4BA1-AE95-05A3E9E3BC21}
+		{8C89A7D8-CA4C-426C-87F1-AC9392BD07E7} = {ABDEF804-9A9D-4BA1-AE95-05A3E9E3BC21}
+		{FF0D41C9-33C8-4443-B9B4-AB45B5646932} = {ABDEF804-9A9D-4BA1-AE95-05A3E9E3BC21}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE80194F-3ADE-441B-92A5-7E71FC307478}
 	EndGlobalSection
 EndGlobal
