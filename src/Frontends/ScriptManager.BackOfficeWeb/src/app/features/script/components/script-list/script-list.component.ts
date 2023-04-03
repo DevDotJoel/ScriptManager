@@ -7,6 +7,7 @@ import { ScriptModel } from 'src/app/models/ScriptModel';
   styleUrls: ['./script-list.component.css']
 })
 export class ScriptListComponent {
+  displayedColumns: string[] = ['Name', 'Description', 'Total Questions', 'Actions'];
   @Input() scripts:ScriptModel[];
   constructor() { }
 

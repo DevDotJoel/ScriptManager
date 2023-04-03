@@ -2,4 +2,11 @@
 
 html,body{
   height: 100% !important;
+  background-color: rgb(248, 246, 246);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+mat-form-field {
+  width: 100%;
 }

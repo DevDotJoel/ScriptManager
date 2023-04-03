@@ -9,7 +9,7 @@ import { ScriptService } from 'src/app/services/script/script.service';
   styleUrls: ['./scripts.component.css']
 })
 export class ScriptsComponent {
-
+  searchFilter:string;
   scripts$:Observable<ScriptModel[]>;
 
   constructor(private scriptService:ScriptService) { }
